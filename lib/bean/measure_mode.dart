@@ -1,0 +1,5 @@
+
+enum MeasureMode {
+  aperturePriority,
+  shutterPriority,
+}
