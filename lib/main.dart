@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => CameraControllerProvider(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: '测光仪',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
