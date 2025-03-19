@@ -1,8 +1,8 @@
 import 'package:camera/camera.dart';
 import 'dart:math' as math;
 
-import 'package:lightmeter/bean/metering_mode.dart';
-import 'package:lightmeter/bean/measure_mode.dart';
+import '../bean/metering_mode.dart';
+import '../bean/measure_mode.dart';
 
 
 class LightMeterModel {
