@@ -83,6 +83,29 @@ class RetroCameraTheme {
     );
   }
 
+  static ButtonStyle get modeButtonStyle {
+    return ElevatedButton.styleFrom(
+      backgroundColor: metallic,
+      foregroundColor: primaryText,
+      elevation: 4,
+      shadowColor: Colors.black54,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+        side: const BorderSide(color: metallicLight, width: 1),
+      ),
+    ).copyWith(
+      overlayColor: MaterialStateProperty.resolveWith<Color?>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.pressed)) {
+            return metallicLight.withOpacity(0.3);
+          }
+          return null;
+        },
+      ),
+    );
+  }
+
   static BoxDecoration get viewfinderDecoration {
     return BoxDecoration(
       borderRadius: BorderRadius.circular(12),

@@ -42,40 +42,24 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () {},
           ),
           actions: [
-            Row(
-              children: [
-                PopupMenuButton<MeteringMode>(
-                  onSelected: (MeteringMode mode) {
-                    setState(() {
-                      _lightMeter.meteringMode = mode;
-                    });
-                  },
-                  itemBuilder: (BuildContext context) => <PopupMenuEntry<MeteringMode>>[
-                    const PopupMenuItem<MeteringMode>(
-                      value: MeteringMode.average,
-                      child: Text('平均测光'),
-                    ),
-                    const PopupMenuItem<MeteringMode>(
-                      value: MeteringMode.spot,
-                      child: Text('点测光'),
-                    ),
-                    const PopupMenuItem<MeteringMode>(
-                      value: MeteringMode.matrix,
-                      child: Text('矩阵测光'),
-                    ),
-                  ],
+            PopupMenuButton<MeteringMode>(
+              onSelected: (MeteringMode mode) {
+                setState(() {
+                  _lightMeter.meteringMode = mode;
+                });
+              },
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<MeteringMode>>[
+                const PopupMenuItem<MeteringMode>(
+                  value: MeteringMode.average,
+                  child: Text('平均测光'),
                 ),
-                const SizedBox(width: 8),
-                TextButton.icon(
-                  onPressed: () {
-                    setState(() {
-                      _lightMeter.exposureMode = _lightMeter.exposureMode == MeasureMode.aperturePriority
-                          ? MeasureMode.shutterPriority
-                          : MeasureMode.aperturePriority;
-                    });
-                  },
-                  icon: const Icon(Icons.exposure),
-                  label: Text(_lightMeter.exposureMode == MeasureMode.aperturePriority ? '光圈优先' : '快门优先'),
+                const PopupMenuItem<MeteringMode>(
+                  value: MeteringMode.spot,
+                  child: Text('点测光'),
+                ),
+                const PopupMenuItem<MeteringMode>(
+                  value: MeteringMode.matrix,
+                  child: Text('矩阵测光'),
                 ),
               ],
             ),
