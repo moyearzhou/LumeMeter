@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:math' as math;
@@ -52,52 +54,29 @@ class LightMeterModel {
     }
   }
 
-  // 计算EV值
-  double calculateEV(double luminance) {
-    // 将亮度转换为LUX值
-    lux = luminance * 100000; // 根据相机传感器的特性进行校准
-    // EV = log2(光圈²/快门时间) + log2(ISO/100)
-    return (math.log(aperture * aperture / shutterSpeed) / math.ln2) + (math.log(iso / 100) / math.ln2);
-  }
+    // 计算EV值
+   double calculateEV(CameraImage image) {
+    final lensAperture = (image.lensAperture ?? 0.0);
+
+    
+    // 曝光时间：秒, 需要将纳秒转为秒
+    final lensShutterSpeed = (image.sensorExposureTime ?? 0) / 1e9;
+    final sensorLense= image.sensorSensitivity ?? 0;
+
+    final evApertureShutter = log(pow(lensAperture, 2) / lensShutterSpeed) / log(2);
+    final evISO = log(sensorLense / 100) / log(2);
+
+    // 计算EV值
+    double ev = evApertureShutter + evISO;
+    // print('Aperture: $lensAperture, ShutterSpeed: $lensShutterSpeed, ISO: $sensorLense , EV: $ev');
+    return ev;
+   }
+
 
   // 从图像计算亮度
-  double calculateLuminance(CameraImage image) {
-    // 将YUV格式转换为灰度值
-    final bytes = image.planes[0].bytes;
-    double totalLuminance = 0;
-    int pixelCount = bytes.length;
-
-    // 根据测光模式选择计算区域
-    switch (meteringMode) {
-      case MeteringMode.spot:
-        // 仅计算中心区域
-        final centerX = image.width ~/ 2;
-        final centerY = image.height ~/ 2;
-        final spotSize = 50; // 点测光区域大小
-        
-        for (int y = centerY - spotSize; y < centerY + spotSize; y++) {
-          for (int x = centerX - spotSize; x < centerX + spotSize; x++) {
-            if (x >= 0 && x < image.width && y >= 0 && y < image.height) {
-              totalLuminance += bytes[y * image.width + x];
-            }
-          }
-        }
-        pixelCount = spotSize * spotSize * 4;
-        break;
-        
-      case MeteringMode.matrix:
-        // 将图像分为多个区域进行加权计算
-        // TODO: 实现更复杂的矩阵测光算法
-        totalLuminance = bytes.fold(0, (sum, byte) => sum + byte);
-        break;
-        
-      case MeteringMode.average:
-      default:
-        // 计算整个画面的平均亮度
-        totalLuminance = bytes.fold(0, (sum, byte) => sum + byte);
-    }
-
-    return totalLuminance / (pixelCount * 255); // 归一化到0-1范围
+  double calculateLuminance(double ev) {
+    final lux = 2.5 * pow(2, ev); // EV=0 → 2.5 Lux（基准值）
+    return lux;
   }
 
   // 更新曝光参数

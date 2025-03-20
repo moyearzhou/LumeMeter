@@ -17,8 +17,8 @@ class ShutterSpeedWidget extends StatelessWidget {
     return Column(children: [
       Slider(
         value: lightMeter.shutterSpeed,
-        min: 1/250,
-        max: 1/60,
+        // min: 1/250,
+        // max: 1/60,
         activeColor: RetroCameraTheme.accentColor,
         inactiveColor: RetroCameraTheme.metallicLight,
         onChanged: onChanged,
