@@ -23,14 +23,19 @@ class _ParameterDisplayWidgetState extends State<ParameterDisplayWidget> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: RetroCameraTheme.displayDecoration,
-            child: Text(
-              'EV ${widget.lightMeter.ev.toStringAsFixed(1)}',
-              style: const TextStyle(
-                color: RetroCameraTheme.primaryText,
-                fontFamily: 'monospace',
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+            child: ValueListenableBuilder<double>(
+              valueListenable: widget.lightMeter.evNotifier,
+              builder: (context, ev, child) {
+                return Text(
+                  'EV ${ev.toStringAsFixed(1)}',
+                  style: const TextStyle(
+                    color: RetroCameraTheme.primaryText,
+                    fontFamily: 'monospace',
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                );
+              },
             ),
           ),
           Container(

@@ -9,7 +9,9 @@ import '../bean/measure_mode.dart';
 
 
 class LightMeterModel {
-  double ev = 0.0;
+  final ValueNotifier<double> evNotifier = ValueNotifier(0.0);
+  double get ev => evNotifier.value;
+  set ev(double value) => evNotifier.value = value;
   int iso = 100;
   double shutterSpeed = 1/60;
   double aperture = 5.6;
@@ -67,11 +69,10 @@ class LightMeterModel {
     final evISO = log(sensorLense / 100) / log(2);
 
     // 计算EV值
-    double ev = evApertureShutter + evISO;
-    // print('Aperture: $lensAperture, ShutterSpeed: $lensShutterSpeed, ISO: $sensorLense , EV: $ev');
+    double ev = evApertureShutter - evISO;
+    print('Aperture: $lensAperture, ShutterSpeed: $lensShutterSpeed, ISO: $sensorLense , EV: $ev');
     return ev;
    }
-
 
   // 从图像计算亮度
   double calculateLuminance(double ev) {
@@ -80,8 +81,8 @@ class LightMeterModel {
   }
 
   // 更新曝光参数
-  void updateExposureParams(double ev) {
-    this.ev = ev;
+  void updateExposureParams(double newEv) {
+    ev = newEv;
     
     // 根据曝光模式计算参数
     if (exposureMode == MeasureMode.aperturePriority) {
@@ -107,7 +108,7 @@ class LightMeterModel {
       setAperture(closestAperture);
     }
 
-     print('光圈: f/${aperture.toStringAsFixed(1)}, 快门速度: 1/${(1/shutterSpeed).toStringAsFixed(0)}s, ISO: $iso, EV: ${ev.toStringAsFixed(1)}, 亮度: ${lux.toStringAsFixed(1)} lux: ${lux.toStringAsFixed(1)}');
+    //  print('光圈: f/${aperture.toStringAsFixed(1)}, 快门速度: 1/${(1/shutterSpeed).toStringAsFixed(0)}s, ISO: $iso, EV: ${ev.toStringAsFixed(1)}, 亮度: ${lux.toStringAsFixed(1)} lux: ${lux.toStringAsFixed(1)}');
    
   }
 }

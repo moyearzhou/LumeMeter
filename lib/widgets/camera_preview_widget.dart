@@ -24,9 +24,11 @@ class _CameraPreviewWidgetState extends State<CameraPreviewWidget> {
     // 设置图像流监听
     widget.controller.startImageStream((CameraImage image) {
       if (!mounted) return;
+      // EV值
       final ev = widget.lightMeter.calculateEV(image);
-      // 计算亮度并更新EV值
-      final luminance = widget.lightMeter.calculateLuminance(ev);
+      final lux = widget.lightMeter.calculateLuminance(ev);
+      widget.lightMeter.lux = lux;
+
       widget.lightMeter.updateExposureParams(ev);
       setState(() {}); // 更新UI显示
     });
