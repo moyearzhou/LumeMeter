@@ -26,7 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<CameraControllerProvider>().initializeCamera();
+    final cameraProvider = context.read<CameraControllerProvider>();
+    cameraProvider.initializeCamera();
   }
 
   @override
@@ -77,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
             return Column(children: [
               Expanded(
-                child: CameraPreviewWidget(controller: cameraProvider.controller!),
+                child: CameraPreviewWidget(controller: cameraProvider.controller!, lightMeter: _lightMeter,),
               ),
               Container(
                 padding: const EdgeInsets.all(16.0),

@@ -1,4 +1,5 @@
 import 'package:camera/camera.dart';
+import 'package:flutter/widgets.dart';
 import 'dart:math' as math;
 
 import '../bean/metering_mode.dart';
@@ -10,6 +11,9 @@ class LightMeterModel {
   int iso = 100;
   double shutterSpeed = 1/60;
   double aperture = 5.6;
+  final ValueNotifier<double> luxNotifier = ValueNotifier(0.0);
+  double get lux => luxNotifier.value;
+  set lux(double value) => luxNotifier.value = value;
   MeteringMode meteringMode = MeteringMode.average;
   MeasureMode exposureMode = MeasureMode.aperturePriority;
 
@@ -50,6 +54,8 @@ class LightMeterModel {
 
   // 计算EV值
   double calculateEV(double luminance) {
+    // 将亮度转换为LUX值
+    lux = luminance * 100000; // 根据相机传感器的特性进行校准
     // EV = log2(光圈²/快门时间) + log2(ISO/100)
     return (math.log(aperture * aperture / shutterSpeed) / math.ln2) + (math.log(iso / 100) / math.ln2);
   }
@@ -121,5 +127,8 @@ class LightMeterModel {
       });
       setAperture(closestAperture);
     }
+
+     print('光圈: f/${aperture.toStringAsFixed(1)}, 快门速度: 1/${(1/shutterSpeed).toStringAsFixed(0)}s, ISO: $iso, EV: ${ev.toStringAsFixed(1)}, 亮度: ${lux.toStringAsFixed(1)} lux: ${lux.toStringAsFixed(1)}');
+   
   }
 }

@@ -28,7 +28,7 @@ class _ParameterDisplayWidgetState extends State<ParameterDisplayWidget> {
               style: const TextStyle(
                 color: RetroCameraTheme.primaryText,
                 fontFamily: 'monospace',
-                fontSize: 24,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -36,14 +36,19 @@ class _ParameterDisplayWidgetState extends State<ParameterDisplayWidget> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: RetroCameraTheme.displayDecoration,
-            child: const Text(
-              'LUX 710',
-              style: TextStyle(
-                color: RetroCameraTheme.primaryText,
-                fontFamily: 'monospace',
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+            child: ValueListenableBuilder<double>(
+              valueListenable: widget.lightMeter.luxNotifier,
+              builder: (context, lux, child) {
+                return Text(
+                  'LUX ${lux.toStringAsFixed(0)}',
+                  style: const TextStyle(
+                    color: RetroCameraTheme.primaryText,
+                    fontFamily: 'monospace',
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                );
+              },
             ),
           ),
           Material(
