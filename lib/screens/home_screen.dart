@@ -86,6 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   children: [
                     ParameterDisplayWidget(lightMeter: _lightMeter),
+                    const SizedBox(height: 24.0),
                     ShutterSpeedWidget(
                       lightMeter: _lightMeter,
                       onChanged: (value) {

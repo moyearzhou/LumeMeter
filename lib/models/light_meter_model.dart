@@ -70,7 +70,7 @@ class LightMeterModel {
 
     // 计算EV值
     double ev = evApertureShutter - evISO;
-    print('Aperture: $lensAperture, ShutterSpeed: $lensShutterSpeed, ISO: $sensorLense , EV: $ev');
+    // print('Aperture: $lensAperture, ShutterSpeed: $lensShutterSpeed, ISO: $sensorLense , EV: $ev');
     return ev;
    }
 
