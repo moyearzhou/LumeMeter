@@ -44,7 +44,9 @@ class ExposureParamsWidget extends StatelessWidget {
             ],
           ),
         ),
-        IsoSelectWidget(iso: lightMeter.iso, onIsoChanged: null),
+        IsoSelectWidget(iso: lightMeter.iso, onIsoChanged: (selectedIso) {
+          lightMeter.setIso(selectedIso);
+        }),
       ],
     );
   }
