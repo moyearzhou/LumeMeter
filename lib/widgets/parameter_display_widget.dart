@@ -20,7 +20,7 @@ class _ParameterDisplayWidgetState extends State<ParameterDisplayWidget> {
   Widget build(BuildContext context) {
     return Column(children: [
       Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ValueListenableBuilder<double>(
             valueListenable: widget.lightMeter.evNotifier,

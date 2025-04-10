@@ -80,6 +80,16 @@ class LightMeterModel {
     return lux;
   }
 
+  // 计算光圈, 注意：这个返回的是最接近的光圈值
+  static double calAperture(double targetEv, double targetShutterSpeed, int targetIso) {
+    double calculatedAperture = math.sqrt(targetShutterSpeed * math.pow(2, targetEv - (math.log(targetIso / 100) / math.ln2)));
+
+    double targetAperture = apertureValues.reduce((a, b) {
+      return (a - calculatedAperture).abs() < (b - calculatedAperture).abs() ? a : b;
+     });
+    return targetAperture;
+  }
+
   // 更新曝光参数
   void updateExposureParams(double newEv) {
     ev = newEv;
