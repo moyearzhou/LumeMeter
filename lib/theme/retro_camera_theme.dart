@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
 class RetroCameraTheme {
-  static const Color backgroundColor = Color(0xFF1A1A1A);
+  static const Color backgroundColor = Color(0xFF292929);
   static const Color primaryText = Color(0xFFE0E0E0);
+  static const Color primaryIcon = Color(0xFF6C6C6C);
   static const Color secondaryText = Color(0xFFB0B0B0);
   static const Color accentColor = Color(0xFFFF4D4D);
   static const Color metallic = Color(0xFF404040);
   static const Color metallicLight = Color(0xFF606060);
+
+
+
+
   
   static ThemeData get darkTheme {
     return ThemeData.dark().copyWith(
@@ -108,15 +113,16 @@ class RetroCameraTheme {
 
   static BoxDecoration get viewfinderDecoration {
     return BoxDecoration(
-      borderRadius: BorderRadius.circular(12),
-      border: Border.all(color: Colors.white24, width: 2),
-      boxShadow: const [
-        BoxShadow(
-          color: Colors.black45,
-          offset: Offset(0, 2),
-          blurRadius: 4,
-        ),
-      ],
+      borderRadius: BorderRadius.circular(8),
+      border: Border.all(color: Colors.white24, width: 0),
+      color: Colors.black,
+      // boxShadow: const [
+      //   BoxShadow(
+      //     color: Colors.black45,
+      //     offset: Offset(0, 2),
+      //     blurRadius: 4,
+      //   ),
+      // ],
     );
   }
 }

@@ -4,6 +4,8 @@ import '../theme/retro_camera_theme.dart';
 import '../services/storage_service.dart';
 import 'package:camera/camera.dart';
 
+import 'exposure_params_widget.dart';
+
 class ControlsWidget extends StatelessWidget {
   final CameraController controller;
   final StorageService storage;
@@ -21,6 +23,7 @@ class ControlsWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        ExposureParamsWidget(lightMeter: lightMeter),
         IconButton(
           icon: const Icon(
             Icons.camera,

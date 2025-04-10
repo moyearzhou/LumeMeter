@@ -30,7 +30,7 @@ class ModeToggleButton extends StatelessWidget {
               key: ValueKey<MeasureMode>(exposureMode),
               style: const TextStyle(
                 color: RetroCameraTheme.accentColor,
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),

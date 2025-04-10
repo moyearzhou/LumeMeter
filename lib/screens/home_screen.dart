@@ -37,9 +37,11 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         backgroundColor: RetroCameraTheme.backgroundColor,
         appBar: AppBar(
-          title: const Text('Light Meter'),
+          backgroundColor: RetroCameraTheme.backgroundColor,
+          // title: const Text('Light Meter'),
+          toolbarHeight: 36,
           leading: IconButton(
-            icon: const Icon(Icons.settings, color: RetroCameraTheme.primaryText),
+            icon: const Icon(Icons.settings_outlined, color: RetroCameraTheme.primaryIcon),
             onPressed: () {},
           ),
           actions: [
@@ -81,12 +83,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: CameraPreviewWidget(controller: cameraProvider.controller!, lightMeter: _lightMeter,),
               ),
               Container(
-                padding: const EdgeInsets.all(16.0),
-                decoration: RetroCameraTheme.metallicDecoration,
+                padding: const EdgeInsets.all(12.0),
+                // decoration: RetroCameraTheme.metallicDecoration,
                 child: Column(
                   children: [
                     ParameterDisplayWidget(lightMeter: _lightMeter),
-                    const SizedBox(height: 24.0),
+                    const SizedBox(height: 12.0),
                     ShutterSpeedWidget(
                       lightMeter: _lightMeter,
                       onChanged: (value) {
@@ -95,6 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         });
                       },
                     ),
+                    const SizedBox(height: 8.0),
                     ControlsWidget(
                       controller: cameraProvider.controller!,
                       storage: _storage,

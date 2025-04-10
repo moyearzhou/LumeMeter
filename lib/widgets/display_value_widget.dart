@@ -23,7 +23,7 @@ class DisplayValueWidget extends StatelessWidget {
         style: const TextStyle(
           color: RetroCameraTheme.primaryText,
           fontFamily: 'monospace',
-          fontSize: 18,
+          fontSize: 16,
           fontWeight: FontWeight.bold,
         ),
       ),

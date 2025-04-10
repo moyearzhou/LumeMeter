@@ -12,7 +12,7 @@ const _kDisplayStyles = {
   'primary': TextStyle(
     color: RetroCameraTheme.primaryText,
     fontFamily: 'monospace',
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: FontWeight.bold,
     shadows: [Shadow(color: RetroCameraTheme.accentColor, blurRadius: 8)],
   ),
@@ -83,6 +83,7 @@ class _ShutterSpeedWidgetState extends State<ShutterSpeedWidget> {
       child: Text(
         text,
         key: ValueKey(text),
+        textAlign: TextAlign.center,
         style: isPrimary ? _kDisplayStyles['primary'] : _kDisplayStyles['secondary'],
       ),
     );
@@ -154,12 +155,12 @@ class _ShutterSpeedWidgetState extends State<ShutterSpeedWidget> {
               _formatShutterSpeed(currentSpeed),
               rightSpeed != null ? _formatShutterSpeed(rightSpeed) : '',
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             Stack(
               alignment: Alignment.center,
               children: [_buildScaleBar(), _buildGraduation(isCenter: true)],
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             ValueListenableBuilder<double>(
               valueListenable: _targetApertureNotifier,
               builder: (context, targetAperture, _) {

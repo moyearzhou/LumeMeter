@@ -84,7 +84,7 @@ class _IsoSelectWidgetState extends State<IsoSelectWidget>
                   style: TextStyle(
                     color: RetroCameraTheme.primaryText,
                     fontFamily: 'monospace',
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -109,7 +109,7 @@ class _IsoSelectWidgetState extends State<IsoSelectWidget>
                           style: const TextStyle(
                             color: RetroCameraTheme.primaryText,
                             fontFamily: 'monospace',
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
