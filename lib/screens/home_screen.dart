@@ -97,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         });
                       },
                     ),
-                    const SizedBox(height: 8.0),
+                    const SizedBox(height: 12.0),
                     ControlsWidget(
                       controller: cameraProvider.controller!,
                       storage: _storage,

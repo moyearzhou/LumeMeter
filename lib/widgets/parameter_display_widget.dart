@@ -46,7 +46,7 @@ class _ParameterDisplayWidgetState extends State<ParameterDisplayWidget> {
           ),
         ],
       ),
-      const SizedBox(height: 12),
+      const SizedBox(height: 4),
       // ExposureParamsWidget(lightMeter: widget.lightMeter),
     ]);
   }

@@ -82,7 +82,7 @@ class _IsoSelectWidgetState extends State<IsoSelectWidget>
                 const Text(
                   'ISO ',
                   style: TextStyle(
-                    color: RetroCameraTheme.primaryText,
+                    color: RetroCameraTheme.metallicSecondary,
                     fontFamily: 'monospace',
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

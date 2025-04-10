@@ -18,14 +18,27 @@ class DisplayValueWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: RetroCameraTheme.displayDecoration,
-      child: Text(
-        '$label ${value.toStringAsFixed(fractionDigits)}',
-        style: const TextStyle(
-          color: RetroCameraTheme.primaryText,
-          fontFamily: 'monospace',
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-        ),
+      child: Row(
+        children: [
+          Text(
+            '$label ',
+            style: const TextStyle(
+              color: RetroCameraTheme.metallicSecondary,
+              fontFamily: 'monospace',
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            value.toStringAsFixed(fractionDigits),
+            style: const TextStyle(
+              color: RetroCameraTheme.primaryText,
+              fontFamily: 'monospace',
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
     );
   }

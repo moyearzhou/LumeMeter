@@ -9,10 +9,9 @@ class RetroCameraTheme {
   static const Color metallic = Color(0xFF404040);
   static const Color metallicLight = Color(0xFF606060);
 
+  static const Color metallicSecondary = Color(0xFF868686);
 
 
-
-  
   static ThemeData get darkTheme {
     return ThemeData.dark().copyWith(
       scaffoldBackgroundColor: backgroundColor,
@@ -77,14 +76,14 @@ class RetroCameraTheme {
     return BoxDecoration(
       color: Colors.black,
       borderRadius: BorderRadius.circular(4),
-      border: Border.all(color: metallicLight, width: 1),
-      boxShadow: const [
-        BoxShadow(
-          color: Colors.black45,
-          offset: Offset(1, 1),
-          blurRadius: 2,
-        ),
-      ],
+      border: Border.all(color: metallicLight, width: 0),
+      // boxShadow: const [
+      //   BoxShadow(
+      //     color: Colors.black45,
+      //     offset: Offset(1, 1),
+      //     blurRadius: 2,
+      //   ),
+      // ],
     );
   }
 

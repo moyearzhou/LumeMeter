@@ -26,7 +26,7 @@ class ControlsWidget extends StatelessWidget {
         ExposureParamsWidget(lightMeter: lightMeter),
         IconButton(
           icon: const Icon(
-            Icons.camera,
+            Icons.camera_alt_outlined,
             color: RetroCameraTheme.accentColor,
             size: 32,
           ),
@@ -63,7 +63,7 @@ class ControlsWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(4),
           ),
           child: const Icon(
-            Icons.photo_library,
+            Icons.photo_library_outlined,
             color: RetroCameraTheme.primaryText,
           ),
         ),
